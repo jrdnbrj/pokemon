@@ -25,6 +25,14 @@ export class PokemonService {
     }
   }
 
+  async createInBulk(pokemons: CreatePokemonDto[]) {
+    try {
+      return await this.pokemonModel.insertMany(pokemons);
+    } catch (error) {
+      this.handleExceptions(error)
+    }
+  }
+
   findAll() {
     return this.pokemonModel.find();
   }
@@ -67,6 +75,10 @@ export class PokemonService {
       throw new NotFoundException('Pokemon not found');
 
     return;
+  }
+
+  async removeAll() {
+    return this.pokemonModel.deleteMany({});
   }
 
   private handleExceptions(error: any) {
