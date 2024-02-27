@@ -13,7 +13,7 @@ import { JoiValidationSchema } from './config/joi.validation';
   imports: [
     ConfigModule.forRoot({
       load: [AppConfiguration],
-      validationSchema: JoiValidationSchema,
+      validationSchema: JoiValidationSchema, 
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
